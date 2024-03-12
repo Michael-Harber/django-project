@@ -30,6 +30,24 @@ class ClassView(BaseView):
       })
       return context
 
+class movies(View):
+  def get(self, request):
+      context = {
+          'page_title': 'Movies',
+          'page_heading': 'Welcome to the Movies page',
+          'page_content': 'This is the Movies page.',
+      }
+      return render(request, 'bootswatch.html', context)
+
+class books(View):
+  def get(self, request):
+      context = {
+          'page_title': 'Books',
+          'page_heading': 'Welcome to the Books page',
+          'page_content': 'This is the Books page.',
+      }
+      return render(request, 'bootswatch.html', context)
+
 
 
 def home(request):
