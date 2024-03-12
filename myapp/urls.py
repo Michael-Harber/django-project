@@ -8,5 +8,6 @@ urlpatterns = [
   path('contact/', views.contact, name='contact'),
   path('class/', views.ClassView.as_view(), name='class_view'),
   path('gallery/', views.gallery.as_view(), name='gallery'),
+  path('theme/', views.ThemeView.as_view(), name='theme'),
 ]
 
