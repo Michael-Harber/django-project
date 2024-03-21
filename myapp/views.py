@@ -11,6 +11,13 @@ from django.urls import reverse_lazy
 from .models import Invention
 from django.views.generic import DetailView
 
+from django.views.generic import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from .models import Invention, Category
+from .forms import InventionForm
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
     # Create your views here.
 
@@ -124,6 +131,23 @@ class InventionDetailView(DetailView):
     model = Invention
     template_name = 'invention_view.html'
     context_object_name = 'invention'
+
+class InventionCreateView(LoginRequiredMixin, CreateView):
+    model = Invention
+    form_class = InventionForm
+    template_name = 'create_invention.html'
+    success_url = reverse_lazy('invention-list')
+
+class InventionUpdateView(UpdateView):
+    model = Invention
+    form_class = InventionForm
+    template_name = 'update_invention.html'
+    success_url = reverse_lazy('invention-list')
+
+class InventionDeleteView(DeleteView):
+  model = Invention
+  success_url = reverse_lazy('invention-list')
+
 
 
 
